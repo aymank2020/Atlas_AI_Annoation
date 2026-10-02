@@ -1,0 +1,134 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  line-height: 1.7;
+  color: #1c2942;
+  background: #eef3f8;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 76rem;
+  margin: auto;
+  padding: 1rem;
+  min-width: 0;
+}
+form,
+section {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #c9d6e5;
+  border-radius: 0.6rem;
+  margin-block: 1rem;
+  min-width: 0;
+}
+label {
+  display: block;
+  margin-block: 0.75rem;
+  font-weight: 600;
+}
+input {
+  display: block;
+  font: inherit;
+  max-width: 100%;
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #8fa3bb;
+  border-radius: 0.3rem;
+  margin-block: 0.3rem;
+}
+input[type="number"] {
+  max-width: 16rem;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+button {
+  font: inherit;
+  background: #244f86;
+  color: white;
+  border: 1px solid #244f86;
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+}
+button:disabled {
+  background: #dde4ed;
+  color: #465872;
+  border-color: #a7b4c6;
+  cursor: default;
+}
+:focus-visible {
+  outline: 3px solid #bb4b00;
+  outline-offset: 3px;
+}
+#status {
+  font-weight: 600;
+  padding: 0.7rem;
+  background: #dbe7f5;
+  border-inline-start: 4px solid #244f86;
+}
+dl,
+p,
+li {
+  overflow-wrap: anywhere;
+}
+dt {
+  font-weight: 700;
+  margin-block-start: 0.5rem;
+}
+dd {
+  margin-inline-start: 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  direction: ltr;
+  text-align: start;
+}
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  min-width: 52rem;
+  width: 100%;
+  background: white;
+}
+caption {
+  font-weight: 600;
+  text-align: start;
+  margin-block: 0.5rem;
+}
+th,
+td {
+  border: 1px solid #c9d6e5;
+  text-align: start;
+  padding: 0.5rem;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  max-width: 18rem;
+}
+th {
+  background: #e5edf7;
+}
+td p {
+  margin: 0.1rem 0 0.5rem;
+}
+tr[data-state="blocked"],
+tr[data-state="duplicate"],
+tr[data-state="missing_live"],
+tr[data-state="missing_source"] {
+  background: #fff0ed;
+}
+tr[data-state="warning"] {
+  background: #fff7dd;
+}
+[hidden] {
+  display: none !important;
+}

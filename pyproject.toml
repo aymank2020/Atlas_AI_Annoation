@@ -4,13 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atlas-annotation-core"
-version = "0.1.0"
+version = "0.2.0"
 description = "Offline integrity checks for exported Atlas annotation snapshots"
 requires-python = ">=3.11"
 dependencies = []
 
 [project.scripts]
 atlas-annotation = "atlas_annotation.cli:main"
+atlas-snapshot-review = "atlas_annotation.web:main"
 
 [tool.setuptools.packages.find]
 include = ["atlas_annotation*"]
+
+[tool.setuptools.package-data]
+atlas_annotation = ["ui/*.html", "ui/*.js", "ui/*.css"]

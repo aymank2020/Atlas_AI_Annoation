@@ -1,0 +1,111 @@
+[
+  {
+    "name": "valid",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4,\"current_label\":\"synthetic label\"}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4,\"current_label\":\"synthetic label\"}]",
+    "exit_code": 0,
+    "row_state": "matched"
+  },
+  {
+    "name": "nan",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":NaN,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":NaN,\"end_sec\":4}]",
+    "exit_code": 1,
+    "row_state": "blocked",
+    "reason": "finite numbers"
+  },
+  {
+    "name": "infinity",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":Infinity}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":Infinity}]",
+    "exit_code": 1,
+    "row_state": "blocked",
+    "reason": "finite numbers"
+  },
+  {
+    "name": "empty",
+    "live_json": "[]",
+    "source_json": "[]",
+    "exit_code": 1,
+    "reason": "no segments"
+  },
+  {
+    "name": "duplicate",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4},{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4},{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "exit_code": 1,
+    "row_state": "duplicate",
+    "reason": "duplicate"
+  },
+  {
+    "name": "count_missing",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4},{\"segment_index\":2,\"start_sec\":4,\"end_sec\":8}]",
+    "exit_code": 1,
+    "row_state": "missing_live",
+    "reason": "missing"
+  },
+  {
+    "name": "invalid_interval",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":4,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":4,\"end_sec\":4}]",
+    "exit_code": 1,
+    "row_state": "blocked",
+    "reason": "invalid timestamp interval"
+  },
+  {
+    "name": "drift",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":5}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "exit_code": 1,
+    "row_state": "blocked",
+    "reason": "drifted"
+  },
+  {
+    "name": "invalid_tolerance",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "tolerance_sec": "nan",
+    "exit_code": 2,
+    "reason": "nonnegative"
+  },
+  {
+    "name": "ai_duration_warning",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "plan_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":99}]",
+    "exit_code": 0,
+    "row_state": "warning",
+    "warning": "plan duration"
+  },
+  {
+    "name": "tolerance_boundary",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4.25}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "tolerance_sec": 0.25,
+    "exit_code": 0,
+    "row_state": "matched"
+  },
+  {
+    "name": "malformed_json",
+    "live_json": "{invalid",
+    "source_json": "{invalid",
+    "exit_code": 2
+  },
+  {
+    "name": "ai_nonfinite_warning",
+    "live_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "plan_json": "[{\"segment_index\":1,\"start_sec\":NaN,\"end_sec\":Infinity}]",
+    "exit_code": 0,
+    "row_state": "warning",
+    "warning": "advisory only"
+  },
+  {
+    "name": "invalid_index",
+    "live_json": "[{\"segment_index\":\"1\",\"start_sec\":0,\"end_sec\":4}]",
+    "source_json": "[{\"segment_index\":1,\"start_sec\":0,\"end_sec\":4}]",
+    "exit_code": 2,
+    "reason": "integer"
+  }
+]
