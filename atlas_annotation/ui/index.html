@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مراجعة لقطات Atlas</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>مراجعة لقطات Atlas</h1>
+      <p>
+        قارن لقطة DOM مع المصدر المستخرج. خطة AI اختيارية وتحذيرية؛ هذا الفحص
+        محلي ولا يرسل إلى Atlas.
+      </p>
+      <form id="review-form">
+        <label
+          >ملف لقطة DOM
+          <input
+            id="live-file"
+            type="file"
+            accept=".json,application/json"
+            required
+        /></label>
+        <label
+          >ملف المصدر
+          <input
+            id="source-file"
+            type="file"
+            accept=".json,application/json"
+            required
+        /></label>
+        <label
+          >ملف خطة AI (اختياري)
+          <input id="plan-file" type="file" accept=".json,application/json"
+        /></label>
+        <label
+          >سماحية الفرق بالثواني
+          <input
+            id="tolerance"
+            type="number"
+            min="0"
+            step="any"
+            value="0.25"
+            required
+        /></label>
+        <p>
+          حد كل ملف: 256 KiB من UTF-8 و1000 مقطع. نص NaN/Infinity يصل إلى حارس
+          Python كما هو.
+        </p>
+        <div class="buttons">
+          <button id="review-button" type="submit">مراجعة اللقطات</button>
+          <button type="reset">مسح الملفات والنتيجة</button>
+          <button id="download-report" type="button" disabled>
+            تنزيل تقرير المراجعة
+          </button>
+        </div>
+      </form>
+      <p id="status" role="status" aria-live="polite">
+        اختر الملفين ثم ابدأ المراجعة.
+      </p>
+      <section id="review-result" hidden aria-labelledby="result-title">
+        <h2 id="result-title">نتيجة المراجعة</h2>
+        <p id="counts"></p>
+        <p>
+          الإرسال غير مفوّض دائمًا: <code>submit_authorized=false</code>.
+          الاتساق لا يثبت جودة التسمية.
+        </p>
+        <dl id="checksums"></dl>
+        <h3>أسباب المنع أو خطأ الإدخال</h3>
+        <ul id="blocking"></ul>
+        <h3>تحذيرات AI</h3>
+        <ul id="warnings"></ul>
+        <div
+          class="table-wrap"
+          tabindex="0"
+          aria-label="جدول المقاطع؛ يمكن تمريره أفقيًا"
+        >
+          <table>
+            <caption id="table-caption">
+              المقاطع حسب المعرف
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">المقطع</th>
+                <th scope="col">الحالة</th>
+                <th scope="col">DOM</th>
+                <th scope="col">المصدر</th>
+                <th scope="col">خطة AI</th>
+                <th scope="col">الفرق: DOM − المصدر</th>
+                <th scope="col">الأسباب والتحذيرات</th>
+              </tr>
+            </thead>
+            <tbody id="segment-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
