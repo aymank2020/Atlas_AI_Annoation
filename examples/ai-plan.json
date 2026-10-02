@@ -1,0 +1,6 @@
+{
+  "segments": [
+    {"segment_index": 1, "start_sec": 0.0, "end_sec": 99.0, "label": "pick up cup"},
+    {"segment_index": 2, "start_sec": 4.0, "end_sec": 8.0, "label": "place cup on table"}
+  ]
+}
